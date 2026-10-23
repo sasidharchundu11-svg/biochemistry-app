@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="author" content="Chundu Laboratories"><meta name="publisher" content="Chundu Laboratories"><meta name="copyright" content="© 2026 Chundu Laboratories. All rights reserved.">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0e7c66">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Biochemistry">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.png"><title>Biochemistry</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2330;--mu:#667085;--ac:#0e7c66;--ac2:#e6f4f0;--bd:#e3e6ee;--ok:#16a34a;--bad:#dc2626;--fs:16px}
+body.dark{--bg:#10141c;--card:#1a202b;--tx:#e8ebf2;--mu:#9aa3b5;--ac:#34c3a1;--ac2:#173a33;--bd:#2a3240}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;font:var(--fs)/1.55 system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+header{position:sticky;top:0;z-index:5;background:var(--ac);color:#fff;display:flex;align-items:center;gap:8px;padding:calc(12px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 12px calc(14px + env(safe-area-inset-left))}
+header .hic{border-radius:7px;flex:none}header h1{font-size:1.1em;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header button{background:none;border:0;color:#fff;font-size:1.3em;padding:2px 8px}
+main{padding:12px max(12px,env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));max-width:760px;margin:auto}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:10px 0}
+.row{display:flex;align-items:center;gap:10px}
+.list a{display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin:8px 0}
+.list a small{color:var(--mu)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px 12px;text-align:center;text-decoration:none;color:var(--tx);font-weight:600}
+.tile b{display:block;font-size:1.8em}
+.tabs{display:flex;gap:6px;margin:6px 0}
+.tabs button{flex:1;padding:9px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:.95em}
+.fcard{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:1.1em;cursor:pointer;user-select:none}.fcard .bk{font-size:.95em;text-align:left}.fbtn{display:flex;gap:8px}.fbtn .btn{flex:1}details.qb{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin:8px 0}details.qb summary{cursor:pointer}details.qb ul{margin:8px 0 0;padding-left:20px}.qk{display:inline-block;font-size:.72em;font-weight:600;padding:1px 7px;border-radius:8px;background:var(--ac2);color:var(--ac);margin-right:6px}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+h2{font-size:1.15em;margin:6px 0} h3{font-size:1.02em;margin:0 0 6px;color:var(--ac)}
+.mu{color:var(--mu);font-size:.85em}
+figure{margin:0}figure img{width:100%;max-height:320px;object-fit:contain;background:#fff;border-radius:10px;cursor:zoom-in}figure.tall img{max-height:none}
+figcaption{font-size:.9em;margin-top:6px}
+.cr{font-size:.75em;color:var(--mu);word-break:break-word}.cr a{color:var(--mu)}
+.opt{display:block;width:100%;text-align:left;padding:11px 12px;margin:7px 0;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:.95em}
+.opt.ok{background:#dcfce7;border-color:var(--ok);color:#14532d}.opt.bad{background:#fee2e2;border-color:var(--bad);color:#7f1d1d}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:11px 16px;font-size:.95em;font-weight:600}
+.btn.alt{background:var(--ac2);color:var(--ac)}
+.exp{background:var(--ac2);border-radius:10px;padding:10px;margin-top:8px;font-size:.92em}
+.bar{height:6px;background:var(--bd);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+ol.steps{padding-left:22px}ol.steps li{margin:6px 0}
+#zoom{position:fixed;inset:0;background:#000e;z-index:20;display:none;touch-action:none;overflow:hidden}
+#zoom img{position:absolute;left:50%;top:50%;max-width:100%;max-height:100%;transform-origin:center;background:#fff}
+#zoom .x{position:absolute;top:calc(10px + env(safe-area-inset-top));right:calc(12px + env(safe-area-inset-right));color:#fff;font-size:28px;background:none;border:0;z-index:2}
+#zoom .zc{position:absolute;bottom:0;left:0;right:0;color:#eee;font-size:.8em;padding:10px max(10px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));background:#000a}
+input[type=search]{width:100%;padding:11px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:1em}
+mark{background:#fde68a}
+.tag{display:inline-block;font-size:.7em;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:20px;margin-bottom:6px;background:var(--ac2);color:var(--ac)}
+.t-mnem{background:#fef3c7;color:#92400e}.t-long,.t-short{background:#e0e7ff;color:#3730a3}.t-lec{background:#dcfce7;color:#14532d}
+.vcard{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin:8px 0;overflow:hidden}.vcard>a.vid{border:0;margin:0;border-radius:0}details.vnotes{border-top:1px solid var(--bd);padding:8px 14px;font-size:.9em;background:var(--bg)}details.vnotes summary{cursor:pointer;font-weight:600;color:var(--ac);user-select:none}details.vnotes ul.kp{margin-top:6px}
+.mn{border-left:4px solid #f59e0b}
+table.nt{border-collapse:collapse;width:100%;font-size:.85em}table.nt th,table.nt td{border:1px solid var(--bd);padding:5px 6px;text-align:left;vertical-align:top}table.nt th{background:var(--ac2)}
+.lib{overflow-wrap:anywhere}.lib table{border-collapse:collapse;width:100%;font-size:.85em;display:block;overflow-x:auto}.lib td,.lib th{border:1px solid var(--bd);padding:4px 6px;vertical-align:top}.lib h4{margin:16px 0 6px}.lic{font-size:.8em;color:var(--mu)}
+ul.kp{padding-left:20px;margin:0}ul.kp li{margin:4px 0}
+.vid{gap:10px;justify-content:flex-start!important}.vid .play{flex:none;width:36px;height:36px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center}
+</style></head><body>
+<header><button id="back" aria-label="Back">&#8592;</button><img class="hic" src="icon.svg" alt="" width="28" height="28" onclick="go('#/')"><h1 id="ttl">Biochemistry</h1><button onclick="go('#/settings')" aria-label="Settings">&#9881;</button></header>
+<main id="app"></main>
+<footer id="foot" style="text-align:center;font-size:.75em;color:var(--mu);padding:0 12px 24px">© 2026 Chundu Laboratories. All rights reserved.</footer>
+<div id="zoom"><button class="x" onclick="history.back()">&#10005;</button><img id="zimg" alt=""><div class="zc" id="zcap"></div></div>
+<script src="data/content.js"></script>
+<script src="data/library.js"></script>
+<script>
+const D=window.BQ,$=s=>document.querySelector(s),app=$('#app');
+const S=JSON.parse(localStorage.getItem('bq-settings')||'{"dark":false,"fs":16,"shuffle":true}');
+let P=JSON.parse(localStorage.getItem('bq-progress')||'{}');if(!P.q)P={q:{},read:{},days:[],last:null};
+D.chapters.forEach(c=>c.mcq.forEach(q=>q.ch=c.id));
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function act(){const t=today();if(!P.days.includes(t)){P.days.push(t);P.days=P.days.slice(-400)}save()}
+function streak(){const s=new Set(P.days);let d=new Date(),n=0;const f=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
+ if(!s.has(f(d)))d.setDate(d.getDate()-1);while(s.has(f(d))){n++;d.setDate(d.getDate()-1)}return n}
+const qs_=id=>P.q[id]||{best:null,last:null,n:0,ans:0,cor:0};
+const acc=id=>{const p=qs_(id);return p.ans?p.cor/p.ans:null};
+function markRead(id,v){if(v)P.read[id]=1;else delete P.read[id];act()}
+function toggleRead(id){markRead(id,!P.read[id]);route()}
+const save=()=>{localStorage.setItem('bq-settings',JSON.stringify(S));localStorage.setItem('bq-progress',JSON.stringify(P))};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function applyS(){document.body.classList.toggle('dark',!!S.dark);document.documentElement.style.setProperty('--fs',S.fs+'px')}applyS();
+function go(h){location.hash=h}
+$('#back').onclick=()=>history.length>1?history.back():go('#/');
+const chap=id=>D.chapters.find(c=>c.id==id);
+function credit(i){if(!i.src)return `<div class="cr">${esc(i.lic)}</div>`;return `<div class="cr">${esc(i.title.replace('File:',''))} — ${esc(i.by)} — ${i.licurl?`<a href="${esc(i.licurl)}">${esc(i.lic)}</a>`:esc(i.lic)} — <a href="${esc(i.src)}">Wikimedia Commons</a></div>`}
+function fig(i,cap){return `<figure class="card"><img loading="lazy" src="images/${esc(i.f)}" alt="${esc(cap||i.c)}" data-z="${esc(i.f)}" data-c="${esc(cap||i.c)}"><figcaption>${esc(cap||i.c)}</figcaption>${credit(i)}</figure>`}
+function score(id){const p=qs_(id);return p.best!=null?p.best+'/'+p.n:'—'}
+const V={
+home(){T('Biochemistry');const C=D.chapters,nr=C.filter(c=>P.read[c.id]).length;
+ let A=0,K=0;C.forEach(c=>{const p=qs_(c.id);A+=p.ans;K+=p.cor});const mx=qs_('all');A+=mx.ans;K+=mx.cor;
+ const weak=C.map(c=>({c,a:acc(c.id)})).filter(x=>x.a==null||x.a<.6).sort((x,y)=>(x.a==null?2:x.a)-(y.a==null?2:y.a));
+ const lc=P.last&&chap(P.last),st=streak();
+ return `<div class="card"><h2>Dashboard</h2><div class="mu">MBBS 1st Year Biochemistry · NMC CBME · offline</div></div>
+ ${lc?`<div class="card row"><div style="flex:1"><div class="mu">Last opened</div><b>${esc(lc.name)}</b></div><button class="btn" id="cont" onclick="go('#/${lc.lab?'labs':lc.dis?'specimens':'ch/'+lc.id}')">Continue</button></div>`:''}
+ <div class="grid"><div class="tile"><b id="d-read">${nr}/${C.length}</b>Chapters read<div class="bar"><i style="width:${100*nr/C.length}%"></i></div></div>
+ <div class="tile"><b id="d-acc">${A?Math.round(100*K/A)+'%':'—'}</b>Accuracy<div class="mu">${K}/${A} correct</div></div>
+ <div class="tile"><b id="d-streak">${st}</b>Day streak${st==1?'':'s'}</div>
+ <div class="tile"><b>${C.reduce((a,c)=>a+c.mcq.length,0)}</b>MCQs</div></div>
+ <div class="card"><h3>Revise these (accuracy &lt;60% or unattempted)</h3><div class="list" id="d-weak">${weak.length?weak.slice(0,8).map(x=>`<a href="#/ch/${x.c.lab?'lab/quiz':x.c.dis?'dis/quiz':x.c.id}"><span>${esc(x.c.name)}</span><small>${x.a==null?'not attempted':Math.round(100*x.a)+'%'}</small></a>`).join('')+(weak.length>8?`<div class="mu">+${weak.length-8} more</div>`:''):'<div class="mu">Great — no weak chapters!</div>'}</div></div>
+ <div class="card"><h3>Chapter progress</h3><table style="width:100%;font-size:.85em;border-collapse:collapse" id="d-tab"><tr class="mu"><td>Chapter</td><td>Read</td><td>Best</td><td>Last</td></tr>${C.map(c=>{const p=qs_(c.id);return `<tr style="border-top:1px solid var(--bd)"><td><a style="color:var(--tx)" href="#/${c.lab?'labs':c.dis?'specimens':'ch/'+c.id}">${esc(c.name)}</a></td><td>${P.read[c.id]?'✔':''}</td><td>${p.best!=null?p.best+'/'+p.n:'—'}</td><td>${p.last!=null?p.last+'/'+p.n:'—'}</td></tr>`}).join('')}</table></div>
+ <div class="grid"><a class="tile" href="#/chapters">&#128214;<br>Chapters</a><a class="tile" href="#/labs">&#129514;<br>Lab &amp; Procedures</a><a class="tile" href="#/specimens">&#129680;<br>Dissection &amp; Specimens</a>
+ <a class="tile" href="#/quizall">&#10067;<br>Mixed quiz</a><a class="tile" href="#/gallery">&#128444;<br>Figures (${D.images.length})</a>
+ <a class="tile" href="#/videos">&#9654;<br>Videos (${D.chapters.reduce((a,c)=>a+c.videos.length,0)})</a><a class="tile" href="#/resources">&#128218;<br>Free Resources</a><a class="tile" href="#/library">&#128213;<br>Offline Library</a><a class="tile" href="#/flash" id="t-fc">&#127183;<br>Flashcards (${fcDue()} due)</a><a class="tile" href="#/qbank">&#128221;<br>University Q-bank</a><a class="tile" href="#/search">&#128269;<br>Search</a><a class="tile" href="#/about">&#9432;<br>About &amp; credits</a></div>`},
+chapters(){T('Chapters');return '<div class="list">'+D.chapters.map((c,n)=>`<a href="#/${c.lab?'labs':c.dis?'specimens':'ch/'+c.id}"><span>${n+1}. ${esc(c.name)}<br><small>${c.notes.length} notes · ${c.mcq.length} MCQs · ${c.videos.length} videos · best ${score(c.id)}</small></span><span>&#8250;</span></a>`).join('')+'</div>'},
+ch(id,tab){const c=chap(id);if(!c)return V.home();T(c.name);tab=tab||'notes';P.last=id;act();if(tab=='notes'&&!c.lab&&!c.dis)setTimeout(watchRead,300,id);
+ let h=`<div class="tabs">${['notes','figures','videos','quiz'].map(t=>`<button class="${t==tab?'on':''}" onclick="go('#/ch/${id}/${t}')">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>`;
+ if(tab=='notes')h+=`<div class="row" style="justify-content:space-between"><span class="mu">${P.read[id]?'✔ Read':'Not read yet'}</span><button class="btn alt" id="rd" onclick="toggleRead('${id}')">${P.read[id]?'Mark unread':'Mark as read'}</button></div>`+c.notes.map((n,x)=>noteHtml(n,x)+c.imgs.filter(i=>(i.sec||[]).some(p=>n[0].startsWith(p))).map(i=>fig(i)).join('')).join('')+(c.lab?`<button class="btn alt" onclick="go('#/labs')">&#129514; Practicals (${D.labs.length})</button> `:'')+(c.dis?`<button class="btn alt" onclick="go('#/specimens')">&#129680; Specimens (${D.specimens.length})</button> `:'')+(c.imgs.length?`<button class="btn alt" onclick="go('#/ch/${id}/figures')">View ${c.imgs.length} figure(s)</button> `:'')+(c.videos.length?`<button class="btn alt" onclick="go('#/ch/${id}/videos')">&#9654; Watch (${c.videos.length})</button> `:'')+`<button class="btn" onclick="go('#/ch/${id}/quiz')">Start quiz</button>`;
+ else if(tab=='figures')h+=c.imgs.length?c.imgs.map(i=>fig(i)).join(''):'<div class="card mu">No figures for this chapter.</div>';
+ else if(tab=='videos')h+=NET+(c.videos.length?VTGL+'<div class="list">'+c.videos.map(vidHtml).join('')+'</div>':'<div class="card mu">No video for this chapter yet.</div>');
+ else h+=quizStart(c.id,c.mcq,c.name);return h},
+ videos(){T('Videos');return NET+VTGL+D.chapters.filter(c=>c.videos.length).map(c=>`<h2>${esc(c.name)}</h2><div class="list">${c.videos.map(vidHtml).join('')}</div>`).join('')+'<p class="mu">Videos are hosted on YouTube by their creators (e.g. Ninja Nerd, Osmosis from Elsevier, Armando Hasudungan, Khan Academy, Medicosis Perfectionalis, Zero To Finals, Alila Medical Media, Dr Matt &amp; Dr Mike, Catalyst University, Biochemistry by Dr Rajesh Jambhulkar, Johari MBBS); this app only links to them.</p>'},
+ resources(){T('Free Resources');const cats=[...new Set(D.resources.map(r=>r.cat))];return NET+'<div class="list"><a href="#/library"><span><b>&#128213; Offline Library</b><br><small>Read bundled open textbooks, lab-test guides, glossary and summaries without internet</small></span><span>&#8250;</span></a></div>'+cats.map(k=>`<h2>${esc(k)}</h2><div class="list">${D.resources.filter(r=>r.cat==k).map(r=>`<a href="${esc(r.u)}" target="_blank" rel="noopener"><span><b>${esc(r.t)}</b><br><small>${esc(r.d)}</small></span><span>&#8599;</span></a>`).join('')}</div>`).join('')+'<p class="mu">Only official or openly available resources are listed. Links checked October 2026.</p>'},
+ library(){T('Offline Library');const L=window.LIB||{books:[],sums:[]};return `<div class="card mu">&#9989; Readable without internet. Open-licensed and public-domain material is reproduced with credit; for everything else there is a short summary written for this app, plus the link.</div><h2>Bundled texts</h2><div class="list" id="libbooks">`+L.books.map(b=>`<a href="#/lib/${b.id}"><span><b>${esc(b.t)}</b><br><small>${b.items.length} section${b.items.length>1?'s':''} · ${esc(b.lic)}</small></span><span>&#8250;</span></a>`).join('')+`</div><h2>Summaries (link for full text)</h2><div class="list"><a href="#/libsum"><span><b>Own-words summaries of ${L.sums.length} resources</b><br><small>NMC CBME, StatPearls, WHO, ICMR-NIN, NPTEL and more</small></span><span>&#8250;</span></a></div>`},
+ lib(id,n){const b=(window.LIB||{books:[]}).books.find(x=>x.id==id);if(!b)return '<div class="card">Not found</div>';
+  const cr=`<div class="card lic"><b>Source:</b> ${esc(b.credit)}<br><b>Licence:</b> <a href="${esc(b.licurl)}" target="_blank" rel="noopener">${esc(b.lic)}</a> · <a href="${esc(b.u)}" target="_blank" rel="noopener">Original</a></div>`;
+  if(n==null){T(b.t);return cr+'<div class="list">'+b.items.map((it,k)=>`<a href="#/lib/${b.id}/${k}"><span>${esc(it.t)}</span><span>&#8250;</span></a>`).join('')+'</div>'}
+  const it=b.items[+n];if(!it)return '<div class="card">Not found</div>';T(it.t);
+  return `<div class="card lib"><h2>${esc(it.t)}</h2>${it.html}</div><div class="card lic">From: ${esc(it.src)} — ${esc(it.by)}. Licence: <a href="${esc(it.licurl)}" target="_blank" rel="noopener">${esc(it.lic)}</a>. <a href="${esc(it.u)}" target="_blank" rel="noopener">View original &#8599;</a></div><div class="grid">${+n>0?`<a class="tile" href="#/lib/${b.id}/${+n-1}">&#8249; Previous</a>`:''}${+n<b.items.length-1?`<a class="tile" href="#/lib/${b.id}/${+n+1}">Next &#8250;</a>`:''}</div>`},
+ libsum(){T('Resource summaries');return (window.LIB||{sums:[]}).sums.map(x=>`<div class="card libs"><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p><div class="lic"><b>Licence check:</b> ${esc(x.lic)}<br><a href="${esc(x.u)}" target="_blank" rel="noopener">Open original (internet) &#8599;</a></div></div>`).join('')},
+specimens(){T('Dissection & Specimens');P.last='dis';act();return `<div class="card mu">Gross specimens and pathology of organs affected by biochemical disorders. Each links to its chapter.</div><div class="list">`+D.specimens.map(p=>`<a href="#/specimen/${p.id}"><span>${esc(p.t)}<br><small>${esc((chap(p.ch)||{}).name||'')}</small></span><span>&#8250;</span></a>`).join('')+`</div><button class="btn alt" onclick="go('#/ch/dis/notes')">&#128214; Chapter Notes (${chap('dis').notes.length})</button> <button class="btn" onclick="go('#/ch/dis/quiz')">Specimen MCQs (${chap('dis').mcq.length})</button>`},
+specimen(id){const p=D.specimens.find(x=>x.id==id);if(!p)return V.specimens();T(p.t);const c=chap(p.ch);
+ return p.imgs.map(i=>i.f.startsWith('il_')?fig(i).replace('<figure class="card">','<figure class="card tall">'):fig(i)).join('')+`<div class="card"><h3>What to see</h3><ol class="steps">${p.see.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div><div class="card"><h3>Gross examination</h3><ol class="steps">${p.gross.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div><div class="card"><h3>Biochemical basis</h3>${esc(p.basis)}</div><div class="card"><h3>Related lab tests</h3><ul>${p.tests.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div><div class="card"><h3>Viva questions</h3>${p.viva.map((v,n)=>`<details><summary><b>Q${n+1}.</b> ${esc(v[0])}</summary><p>${esc(v[1])}</p></details>`).join('')}</div>`+(c?`<button class="btn" onclick="go('#/ch/${c.id}')">Open chapter: ${esc(c.name)}</button>`:'')},
+labs(){T('Lab & Procedures');P.last='lab';act();return `<div class="card mu">Practical biochemistry: principles, steps and interpretation.</div><div class="list">`+D.labs.map(l=>`<a href="#/lab/${l.id}"><span>${esc(l.t)}</span><span>&#8250;</span></a>`).join('')+`</div><button class="btn alt" onclick="go('#/ch/lab/notes')">&#128214; Chapter Notes (${chap('lab').notes.length})</button> <button class="btn" onclick="go('#/ch/lab/quiz')">Practical MCQs (${chap('lab').mcq.length})</button>`},
+lab(id){const l=D.labs.find(x=>x.id==id);if(!l)return V.labs();T(l.t);const im=l.img&&D.images.find(i=>i.f==l.img);
+ return (im?fig(im):'')+`<div class="card"><h3>Aim</h3>${esc(l.aim)}</div><div class="card"><h3>Procedure</h3><ol class="steps">${l.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div><div class="card"><h3>Interpretation</h3>${esc(l.interp)}</div>`},
+gallery(){T('Figures');return D.chapters.filter(c=>c.imgs.length).map(c=>`<h2>${esc(c.name)}</h2>`+c.imgs.map(i=>fig(i)).join('')).join('')+'<h2>Lab &amp; Procedures</h2>'+D.images.filter(i=>i.ch=='lab').map(i=>fig(i)).join('')+'<h2>Dissection &amp; Specimens</h2>'+D.images.filter(i=>i.ch=='dis').map(i=>fig(i)).join('')},
+flash(){T('Flashcards');const t=D.chapters.reduce((a,c)=>a+c.fc.length,0);return `<div class="card mu">Tap a card to flip. <b>Know</b> pushes it further away (1, 3, 7, 14, 30 days); <b>Again</b> repeats it this session. ${fcDue()} of ${t} cards due today.</div><div class="list" id="fcdecks">`+D.chapters.map(c=>`<a href="#/fc/${c.id}"><span>${esc(c.name)}<br><small>${c.fc.length} cards · ${fcDue(c)} due</small></span><span>&#8250;</span></a>`).join('')+'</div>'},
+ fc(id){const c=chap(id);if(!c)return V.flash();T('Cards: '+c.name);FS={c,q:c.fc.filter(x=>fcIsDue(x.id)),i:0,flip:false,done:0};if(!FS.q.length)FS.q=c.fc.slice();return '<div id="fcw"></div>'+(setTimeout(fcDraw,0),'')},
+ qbank(){T('University Q-bank');const n=k=>D.chapters.reduce((a,c)=>a+c.qb.filter(q=>q.k==k).length,0);return `<div class="card mu">University-style questions in the usual Indian MBBS pattern, with model answer outlines in point form. These are typical questions written for revision, <b>not</b> actual past papers from any particular university or year. Long essays: ${n('L')} · Short notes: ${n('S')} · Very short / reason-why: ${n('V')}</div><div class="list" id="qbch">`+D.chapters.map(c=>`<a href="#/qb/${c.id}"><span>${esc(c.name)}<br><small>${c.qb.length} questions</small></span><span>&#8250;</span></a>`).join('')+'</div>'},
+ qb(id){const c=chap(id);if(!c)return V.qbank();T('Q-bank: '+c.name);const L={L:['Long essay','10 marks'],S:['Short note','5 marks'],V:['Very short / reason why','2-3 marks']};
+  return '<div class="card mu">University-style (not actual past papers). Tap a question to see the answer outline.</div>'+['L','S','V'].map(k=>{const qs=c.qb.filter(q=>q.k==k);return qs.length?`<h2>${L[k][0]} <small class="mu">(${L[k][1]})</small></h2>`+qs.map(q=>`<details class="qb"><summary><span class="qk">${L[k][1]}</span>${esc(q.q)}</summary><ul>${q.a.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></details>`).join(''):''}).join('')},
+quizall(){T('Mixed quiz');return quizStart('all',D.chapters.flatMap(c=>c.mcq),'All chapters',20)},
+search(){T('Search');setTimeout(()=>{const i=$('#q');i.focus();i.oninput=()=>{const q=i.value.trim().toLowerCase();if(q.length<3){$('#res').innerHTML='';return}
+ const r=[];D.chapters.forEach(c=>c.notes.forEach(([a,b])=>{const k=b.toLowerCase().indexOf(q);if(k>=0||a.toLowerCase().includes(q))r.push(`<a href="#/ch/${c.id}"><span><b>${esc(c.name)}</b> › ${esc(a)}<br><small>…${esc(b.substr(Math.max(0,k-60),160))}…</small></span></a>`)}));D.chapters.forEach(c=>c.videos.forEach(v=>{const txt=(v.t+' '+(v.notes||[]).join(' '));const k=txt.toLowerCase().indexOf(q);if(k>=0)r.push(`<a href="#/ch/${c.id}/videos"><span><b>&#9654; ${esc(v.t)}</b> (${esc(c.name)})<br><small>…${esc(txt.substr(Math.max(0,k-40),150))}…</small></span></a>`)}));
+ D.specimens.forEach(p=>{if((p.t+p.see.join(' ')+p.gross.join(' ')+p.basis+p.tests.join(' ')+p.viva.map(v=>v.join(' ')).join(' ')).toLowerCase().includes(q))r.push(`<a href="#/specimen/${p.id}"><span>${esc(p.t)}</span><small>Specimen</small></a>`)});D.labs.forEach(l=>{if((l.t+l.aim+l.steps.join(' ')+l.interp).toLowerCase().includes(q))r.push(`<a href="#/lab/${l.id}"><span><b>Lab</b> › ${esc(l.t)}</span></a>`)});
+ $('#res').innerHTML=r.join('')||'<div class="mu">No matches</div>'}},0);return '<input id="q" type="search" placeholder="Search notes (min 3 letters)"><div class="list" id="res"></div>'},
+settings(){T('Settings');setTimeout(()=>{$('#dk').onchange=e=>{S.dark=e.target.checked;save();applyS()};$('#sh').onchange=e=>{S.shuffle=e.target.checked;save()};$('#fs').oninput=e=>{S.fs=+e.target.value;save();applyS()}},0);
+ return `<div class="card"><label class="row"><input type="checkbox" id="dk" ${S.dark?'checked':''}> Dark mode</label></div>
+ <div class="card"><label class="row"><input type="checkbox" id="sh" ${S.shuffle?'checked':''}> Shuffle quiz questions</label></div>
+ <div class="card">Text size: <input type="range" id="fs" min="13" max="22" value="${S.fs}" style="width:100%"></div>
+ <div class="card"><div class="row" style="flex-wrap:wrap"><button class="btn" id="expb" onclick="expProg()">&#11015; Export backup (.json)</button><button class="btn alt" id="impb" onclick="$('#impf').click()">&#11014; Import backup</button><input type="file" id="impf" accept=".json,application/json" style="display:none" onchange="impProg(this)"></div><div id="bmsg" class="mu" style="margin-top:6px"></div></div>
+ <div class="card"><button class="btn alt" onclick="if(confirm('Reset all progress: chapters read, quiz scores, accuracy, streak, flashcard schedule and last-opened?')){P={q:{},read:{},days:[],last:null};FC={};localStorage.removeItem('bq-fc');save();go('#/')}">Reset all progress (reads, scores, streak, flashcards)</button></div><div class="card mu">Biochemistry v1.4 · Developer: Chundu Laboratories<br>© 2026 Chundu Laboratories. All rights reserved.</div>`},
+about(){T('About & credits');return `<div class="card"><h2>Biochemistry</h2><div>Offline study app for MBBS Phase 1 Biochemistry (NMC CBME). Version 1.4. Made for Kiran.</div><p><b>Developer / publisher:</b> Chundu Laboratories</p><p>© 2026 Chundu Laboratories. All rights reserved. Images remain under their own licences (see credits below).</p>
+ <p class="mu">Notes and MCQs are concise summaries of standard textbook content (Satyanarayana & Chakrapani; Vasudevan, Sreekumari & Vaidyanathan; Harper's Illustrated Biochemistry) and current guideline values (ADA diagnostic criteria, WHO ORS, ICMR-NIN). Reference ranges vary between laboratories. This app is a revision aid and not a substitute for the textbooks or clinical judgement.</p></div>
+ <div class="card"><h3>Offline Library credits</h3><div class="mu">Texts in the Offline Library keep their own licences: OpenStax Biology 2e and Anatomy &amp; Physiology 2e (Rice University, CC BY-NC-SA 4.0, text only, figures omitted); MedlinePlus medical test pages and the NHGRI Talking Glossary (U.S. Government works, public domain). Sources and links are shown on every page. Summaries of other resources were written for this app.</div></div>
+ <div class="card"><h3>Image credits</h3><div class="mu">All figures are from Wikimedia Commons under free licences (public domain, CC0, CC BY or CC BY-SA). Images were resized and converted to WebP; some captions were written for this app. CC BY-SA images remain under their original licence.</div></div>`+
+ D.images.map(i=>`<div class="card" style="padding:10px"><div style="font-size:.9em">${esc(i.c)}</div>${credit(i)}</div>`).join('')}
+};
+function watchRead(id){const chk=()=>{if(location.hash.indexOf('/ch/'+id)<0||(location.hash.split('/')[3]||'notes')!='notes'){removeEventListener('scroll',chk);return}
+ if(innerHeight+scrollY>=document.documentElement.scrollHeight-40&&!P.read[id]){markRead(id,1);const r=document.getElementById('rd');if(r){r.textContent='Mark unread';r.previousElementSibling.textContent='✔ Read'}removeEventListener('scroll',chk)}};addEventListener('scroll',chk);chk()}
+function noteHtml([a,b,k]){const lab={key:'Key points',table:'Table',mnem:'Mnemonic',long:'Exam: long answer',short:'Exam: short answer',lec:'Lecture & CBME notes'}[k];
+ const tag=lab?`<span class="tag t-${k}">${lab}</span>`:'';
+ if(k=='table'){const r=b.split('\n').map(x=>x.split('|'));return `<div class="card">${tag}<h3>${esc(a)}</h3><div style="overflow-x:auto"><table class="nt"><tr>${r[0].map(x=>`<th>${esc(x)}</th>`).join('')}</tr>${r.slice(1).map(x=>`<tr>${x.map(y=>`<td>${esc(y)}</td>`).join('')}</tr>`).join('')}</table></div></div>`}
+ if(k=='key')return `<div class="card">${tag}<h3>${esc(a)}</h3><ul class="kp">${b.split('\n').map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
+ return `<div class="card${k=='mnem'?' mn':''}">${tag}<h3>${esc(a)}</h3><div>${esc(b).replace(/\n/g,'<br>')}</div></div>`}
+function vidHtml(v){return `<div class="vcard"><a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener"><span class="play">&#9654;</span><span><b>${esc(v.t)}</b><br><small>${esc(v.ch)} · ${esc(v.len)}</small></span></a>${v.notes&&v.notes.length?`<details class="vnotes"><summary>&#128221; Lecture Notes (${v.notes.length} key points)</summary><ul class="kp">${v.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></details>`:''}</div>`}
+const VTGL='<div class="row" style="justify-content:space-between;margin:8px 0"><span class="mu">&#128221; Offline lecture notes under every video</span><button class="btn alt" id="vtgl" onclick="const d=document.querySelectorAll(\'details.vnotes\'),o=![...d].every(x=>x.open);d.forEach(x=>x.open=o);this.textContent=o?\'Collapse All Notes\':\'Expand All Notes\'">Expand All Notes</button></div>';
+const NET='<div class="card mu">&#128246; Videos and resources open in YouTube / your browser and need internet. Everything else in this app works offline.</div>';
+let FC=JSON.parse(localStorage.getItem('bq-fc')||'{}'),FS=null;const IV=[1,3,7,14,30],DAY=864e5;
+function fcIsDue(id){const r=FC[id];return !r||r.due<=Date.now()}
+function fcDue(c){return (c?[c]:D.chapters).reduce((a,x)=>a+x.fc.filter(f=>fcIsDue(f.id)).length,0)}
+function fcDraw(){const w=$('#fcw');if(!w||!FS)return;const card=FS.q[FS.i];
+ if(!card){w.innerHTML=`<div class="card fcard" id="fcdone"><b>Deck done!</b><div class="mu">${FS.done} cards reviewed · ${fcDue(FS.c)} still due in this deck</div></div><button class="btn" onclick="go('#/flash')">Back to decks</button>`;return}
+ w.innerHTML=`<div class="mu" style="text-align:center">Card ${FS.i+1} of ${FS.q.length}</div><div class="card fcard" id="fcc" onclick="FS.flip=!FS.flip;fcDraw()">${FS.flip?`<div class="mu">${esc(card.f)}</div><hr style="border:0;border-top:1px solid var(--bd);width:100%"><div class="bk">${esc(card.b)}</div>`:`<div>${esc(card.f)}</div><div class="mu" style="font-size:.8em;margin-top:12px">tap to flip</div>`}</div>`+(FS.flip?`<div class="fbtn"><button class="btn alt" id="fcagain" onclick="fcAns(0)">Again</button><button class="btn" id="fcknow" onclick="fcAns(1)">Know</button></div>`:'')}
+function fcAns(ok){const card=FS.q[FS.i],r=FC[card.id]||{b:0};if(ok){r.b=Math.min((r.b||0)+1,IV.length);r.due=Date.now()+IV[r.b-1]*DAY}else{r.b=0;r.due=Date.now();FS.q.push(card)}
+ FC[card.id]=r;localStorage.setItem('bq-fc',JSON.stringify(FC));FS.i++;FS.done++;FS.flip=false;fcDraw()}
+function T(t){$('#ttl').textContent=t}
+let Q=null;
+function quizStart(id,pool,name,lim){let qs=pool.slice();if(S.shuffle||lim)qs.sort(()=>Math.random()-.5);if(lim)qs=qs.slice(0,lim);
+ Q={id,qs,i:0,sc:0,name};return `<div id="qz">${qhtml()}</div>`}
+function retry(){Q.i=0;Q.sc=0;if(S.shuffle)Q.qs.sort(()=>Math.random()-.5);$('#qz').innerHTML=qhtml()}
+function qhtml(){const q=Q.qs[Q.i];if(!q){const n=Q.qs.length;const p=qs_(Q.id);p.n=n;p.last=Q.sc;p.best=Math.max(Q.sc,p.best||0);P.q[Q.id]=p;act();
+  return `<div class="card"><h2>Score: ${Q.sc}/${n}</h2><div class="bar"><i style="width:${100*Q.sc/n}%"></i></div><p class="mu">Best: ${P.q[Q.id].best}/${n}</p><button class="btn" onclick="retry()">Retry</button> <button class="btn alt" onclick="history.back()">Done</button></div>`}
+ return `<div class="mu">${esc(Q.name)} · Q ${Q.i+1}/${Q.qs.length} · score ${Q.sc}</div><div class="bar"><i style="width:${100*Q.i/Q.qs.length}%"></i></div><div class="card"><b>${esc(q.q)}</b>${q.o.map((o,k)=>`<button class="opt" data-k="${k}">${String.fromCharCode(65+k)}. ${esc(o)}</button>`).join('')}<div id="ex"></div></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('.opt');if(b&&Q&&!b.disabled){const q=Q.qs[Q.i],k=+b.dataset.k;
+ document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.k==q.a)x.classList.add('ok')});if(k==q.a)Q.sc++;else b.classList.add('bad');{const cid=Q.id=='all'?q.ch:Q.id,p=qs_(cid);p.ans++;if(k==q.a)p.cor++;if(Q.id=='all'&&!p.n)p.n=chap(cid).mcq.length;P.q[cid]=p;act()}
+ $('#ex').innerHTML=`<div class="exp"><b>${k==q.a?'Correct':'Incorrect'}.</b> ${esc(q.e)}</div><p><button class="btn" id="nx">${Q.i+1<Q.qs.length?'Next':'Finish'}</button></p>`;
+ $('#nx').onclick=()=>{Q.i++;$('#qz').innerHTML=qhtml();scrollTo(0,0)};if(navigator.vibrate&&k!=q.a)navigator.vibrate(60);return}
+ const z=e.target.closest('[data-z]');if(z){openZoom(z.dataset.z,z.dataset.c)}});
+// zoom viewer
+let zs=1,zx=0,zy=0;const zi=$('#zimg'),zb=$('#zoom');
+function zt(){zi.style.transform=`translate(-50%,-50%) translate(${zx}px,${zy}px) scale(${zs})`}
+function openZoom(f,c){zi.src='images/'+f;$('#zcap').textContent=c+' (pinch or double-tap to zoom)';zs=1;zx=zy=0;zt();zb.style.display='block';history.pushState({z:1},'',location.hash)}
+window.addEventListener('popstate',()=>{if(zb.style.display=='block'){zb.style.display='none'}});
+let pts={},d0=0,s0=1,lx=0,ly=0,lt=0;
+zb.addEventListener('pointerdown',e=>{pts[e.pointerId]=e;lx=e.clientX;ly=e.clientY;const k=Object.values(pts);if(k.length==2){d0=Math.hypot(k[0].clientX-k[1].clientX,k[0].clientY-k[1].clientY);s0=zs}
+ const n=Date.now();if(n-lt<300&&k.length==1){zs=zs>1?1:2.5;if(zs==1)zx=zy=0;zt()}lt=n});
+zb.addEventListener('pointermove',e=>{if(!pts[e.pointerId])return;pts[e.pointerId]=e;const k=Object.values(pts);
+ if(k.length==2){zs=Math.min(6,Math.max(1,s0*Math.hypot(k[0].clientX-k[1].clientX,k[0].clientY-k[1].clientY)/d0));zt()}
+ else if(zs>1){zx+=e.clientX-lx;zy+=e.clientY-ly;lx=e.clientX;ly=e.clientY;zt()}});
+['pointerup','pointercancel'].forEach(t=>zb.addEventListener(t,e=>{delete pts[e.pointerId]}));
+zb.addEventListener('wheel',e=>{zs=Math.min(6,Math.max(1,zs*(e.deltaY<0?1.2:1/1.2)));zt();e.preventDefault()},{passive:false});
+function route(){if(zb.style.display=='block'){zb.style.display='none'}const p=location.hash.replace(/^#\/?/,'').split('/');const v=V[p[0]]||V.home;
+ app.innerHTML=v(p[1],p[2]);$('#back').style.visibility=p[0]?'visible':'hidden';scrollTo(0,0)}
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="http"]');if(a){a.target='_blank';a.rel='noopener'}},true);
+function expProg(){const txt=JSON.stringify({app:'biochemistry',version:'1.4',exported:new Date().toISOString(),P,FC,S},null,2),name='biochemistry-backup.json',m=$('#bmsg');
+ if(window.AndroidBridge&&AndroidBridge.saveJson){try{const r=AndroidBridge.saveJson(name,txt);if(m)m.textContent=r||'Saved '+name}catch(e){if(m)m.textContent='Export failed: '+e}return}
+ try{const u=URL.createObjectURL(new Blob([txt],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);if(m)m.textContent='Saved '+name+' to your downloads.'}catch(e){if(m)m.textContent='Export failed: '+e}}
+function impProg(inp){const f=inp.files&&inp.files[0],m=$('#bmsg');if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(String(r.result));if(!o||typeof o!='object'||(!o.P&&!o.q))throw new Error('Invalid backup file');if(o.P){P=Object.assign({q:{},read:{},days:[],last:null},o.P)}if(o.FC){FC=o.FC;localStorage.setItem('bq-fc',JSON.stringify(FC))}if(o.S){S=Object.assign(S,o.S)}save();applyS();if(m)m.textContent='Backup imported ✔'}catch(e){if(m)m.textContent='Import failed: '+e.message}};r.readAsText(f)}
+window.addEventListener('hashchange',route);route();
+</script><script>window.MBBS_APP={id:"biochemistry",versionCode:5,versionName:"1.4",contentVersion:1};</script><script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(e=>console.warn("SW",e)));</script></body></html>
